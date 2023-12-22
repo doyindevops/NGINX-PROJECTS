@@ -12,7 +12,7 @@ In this guide, we’ll discuss how to install Nginx on your Ubuntu 20.04 server,
 Spin up an EC2 instance using ubuntu 20.04 as the operating system.
 Log into the instance terminal 
 
-![Alt text](<launch ubuntu 20.04.png>)
+![Alt text](<Images/launch ubuntu 20.04.png>)
 
 
 #### Step 2
@@ -25,14 +25,15 @@ Since this is our first interaction with the apt packaging system in this sessio
 >           sudo apt update
 >           sudo apt install nginx
 
-![Alt text](<sudo apt update.png>)
+![Alt text](<Images/sudo apt update.png>)
 
-![Alt text](<sudo install nginx.png>)
+![Alt text](<Images/sudo install nginx.png>)
 
 
 Open Port 80 in your security setting in the AWS console for Http access
 
-![Alt text](<port 80.png>)
+![Alt text](<Images/port 80.png>)
+
 
 #### Step 3
 **Checking your webserver**
@@ -43,13 +44,13 @@ We can check with the systemd init system to make sure the service is running by
 
 >           systemctl status nginx
 
-![Alt text](<check webserver status.png>)
+![Alt text](<Images/check webserver status.png>)
 
 As confirmed by this out, the service has started successfully. However, the best way to test this is to actually request a page from Nginx.
 
 You can access the default Nginx landing page to confirm that the software is running properly by navigating to your server’s IP address. You can get this from AWS console. The Public IP of the instance
 
-![Alt text](<public IP.png>)
+![Alt text](<Images/public IP.png>)
 
 When you have your server’s IP address, enter it into your browser’s address bar
 
@@ -57,7 +58,7 @@ When you have your server’s IP address, enter it into your browser’s address
 
 You should receive the default Nginx landing page:
 
-![Alt text](<nginx website.png>)
+![Alt text](<Images/nginx website.png>)
 
 If you are on this page, your server is running correctly and is ready to be managed.
 
@@ -80,10 +81,9 @@ To stop and then start the service again, type:
 
 >           sudo systemctl restart nginx
 
+![Alt text](<Images/nginx start and status.png>)
 
-![Alt text](<nginx start and status.png>)
-
-![Alt text](<nginx stooped ans status.png>)
+![Alt text](<Images/nginx stooped ans status.png>)
 
 
 
@@ -106,8 +106,8 @@ The permissions of your web roots should be correct if you haven’t modified yo
 
 >           sudo chmod -R 755 /var/www/your_domain
 
+![Alt text](Images/mkdir,chown,chmod.png)
 
-![Alt text](mkdir,chown,chmod.png)
 
 Next, create a sample index.html page using `vi` or your favorite editor:
 
@@ -147,7 +147,7 @@ Paste in the following configuration block, which is similar to the default, but
             }
     }
 
-![Alt text](<sudo vi your_domain 2.png>)
+![Alt text](<Images/sudo vi your_domain 2.png>)
 
 
 Notice that we’ve updated the root configuration to our new directory, and the server_name to our `domain name`.
@@ -171,7 +171,7 @@ To avoid a possible hash bucket memory problem that can arise from adding additi
 
 Find the `server_names_hash_bucket_size` directive and remove the `#` symbol to uncomment the line. If you are using nano, you can quickly search for words in the file by pressing `CTRL` and `w`.
 
-![Alt text](#server_names_hash.png)
+![Alt text](Images/#server_names_hash.png)
 
 
 Save and close the file when you are finished.
@@ -186,7 +186,7 @@ If there aren’t any problems, restart Nginx to enable your changes:
 
 Nginx should now be serving your domain name. You can test this by navigating to http://your_domain, where you should see something like this:
 
-![Alt text](success.png)
+![Alt text](Images/success.png)
 
 
 #### I hope you learnt something?
